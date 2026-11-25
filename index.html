@@ -1,0 +1,1030 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Welcome Deviji ✨ | Hamari Kahaani</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Sacramento&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-deep: #14050c;
+      --bg-card: rgba(38, 10, 24, 0.78);
+      --rose: #ff3b7f;
+      --rose-soft: #ff85b0;
+      --gold: #ffd166;
+      --cream: #fff5f8;
+      --text-muted: #e6bfd0;
+      --border-glow: rgba(255, 133, 176, 0.28);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: radial-gradient(circle at top, #36091e 0%, #19050f 55%, #0d0207 100%);
+      color: var(--cream);
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    .ambient-bg {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(75px);
+      opacity: 0.35;
+      animation: floatOrb 12s ease-in-out infinite alternate;
+    }
+
+    .orb-1 {
+      width: 320px;
+      height: 320px;
+      background: #ff2e74;
+      top: -80px;
+      left: -80px;
+    }
+
+    .orb-2 {
+      width: 280px;
+      height: 280px;
+      background: #ffb703;
+      bottom: 10%;
+      right: -70px;
+      animation-delay: -4s;
+    }
+
+    .orb-3 {
+      width: 240px;
+      height: 240px;
+      background: #9d174d;
+      top: 45%;
+      left: 50%;
+      animation-delay: -8s;
+    }
+
+    @keyframes floatOrb {
+      0% { transform: translate(0, 0) scale(1); }
+      100% { transform: translate(25px, -30px) scale(1.12); }
+    }
+
+    .floating-heart {
+      position: fixed;
+      bottom: -30px;
+      font-size: 18px;
+      opacity: 0;
+      pointer-events: none;
+      z-index: 1;
+      animation: riseHeart linear forwards;
+    }
+
+    @keyframes riseHeart {
+      0% { transform: translateY(0) scale(0.7) rotate(0deg); opacity: 0; }
+      15% { opacity: 0.7; }
+      85% { opacity: 0.6; }
+      100% { transform: translateY(-108vh) scale(1.25) rotate(22deg); opacity: 0; }
+    }
+
+    .page {
+      display: none;
+      position: relative;
+      z-index: 2;
+      min-height: 100vh;
+      width: 100%;
+      padding: 28px 18px 70px;
+    }
+
+    .page.active {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      animation: pageFadeIn 0.65s ease forwards;
+    }
+
+    @keyframes pageFadeIn {
+      from { opacity: 0; transform: translateY(16px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    #page-welcome {
+      justify-content: center;
+      text-align: center;
+      padding-bottom: 40px;
+    }
+
+    .welcome-card {
+      max-width: 520px;
+      width: 100%;
+      background: rgba(34, 8, 21, 0.72);
+      border: 1px solid var(--border-glow);
+      backdrop-filter: blur(16px);
+      border-radius: 32px;
+      padding: 46px 28px;
+      box-shadow: 0 24px 70px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+    }
+
+    .sparkle-badge {
+      display: inline-block;
+      padding: 6px 16px;
+      border-radius: 999px;
+      background: rgba(255, 209, 102, 0.14);
+      border: 1px solid rgba(255, 209, 102, 0.35);
+      color: var(--gold);
+      font-size: 0.8rem;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+
+    .welcome-title {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: clamp(2rem, 7vw, 3.1rem);
+      line-height: 1.2;
+      background: linear-gradient(135deg, #fff5f8 0%, #ff9ec4 45%, #ffd166 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 14px;
+    }
+
+    .welcome-sub {
+      font-size: 1rem;
+      color: var(--text-muted);
+      line-height: 1.65;
+      margin-bottom: 34px;
+    }
+
+    .heart-entrance-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      background: linear-gradient(135deg, #ff2e74 0%, #e11d48 55%, #fb7185 100%);
+      color: #fff;
+      font-size: 1.12rem;
+      font-weight: 700;
+      padding: 16px 34px;
+      border: none;
+      border-radius: 999px;
+      cursor: pointer;
+      box-shadow: 0 12px 32px rgba(255, 46, 116, 0.48), 0 0 0 0 rgba(255, 77, 136, 0.6);
+      animation: pulseHeartBtn 2.1s infinite;
+      transition: transform 0.22s ease, box-shadow 0.22s ease;
+    }
+
+    .heart-entrance-btn:hover {
+      transform: translateY(-3px) scale(1.03);
+      box-shadow: 0 16px 38px rgba(255, 46, 116, 0.65);
+    }
+
+    .heart-entrance-btn:active {
+      transform: scale(0.97);
+    }
+
+    @keyframes pulseHeartBtn {
+      0% { box-shadow: 0 12px 32px rgba(255, 46, 116, 0.48), 0 0 0 0 rgba(255, 77, 136, 0.55); }
+      70% { box-shadow: 0 12px 32px rgba(255, 46, 116, 0.48), 0 0 0 16px rgba(255, 77, 136, 0); }
+      100% { box-shadow: 0 12px 32px rgba(255, 46, 116, 0.48), 0 0 0 0 rgba(255, 77, 136, 0); }
+    }
+
+    .container {
+      max-width: 780px;
+      width: 100%;
+    }
+
+    .story-header {
+      text-align: center;
+      margin-bottom: 38px;
+    }
+
+    .story-header .script-tag {
+      font-family: 'Sacramento', cursive;
+      font-size: 2.2rem;
+      color: var(--rose-soft);
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .story-header h1 {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: clamp(1.55rem, 4.8vw, 2.3rem);
+      color: var(--cream);
+      margin-bottom: 10px;
+    }
+
+    .story-header p {
+      color: var(--text-muted);
+      font-size: 0.96rem;
+      max-width: 560px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    .timeline {
+      position: relative;
+      padding-left: 28px;
+      margin-bottom: 46px;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 7px;
+      top: 8px;
+      bottom: 8px;
+      width: 3px;
+      border-radius: 999px;
+      background: linear-gradient(180deg, var(--gold), var(--rose), #a855f7, var(--rose));
+    }
+
+    .milestone {
+      position: relative;
+      margin-bottom: 22px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-glow);
+      backdrop-filter: blur(14px);
+      border-radius: 22px;
+      padding: 20px 22px;
+      box-shadow: 0 12px 34px rgba(0, 0, 0, 0.35);
+      transition: transform 0.25s ease, border-color 0.25s ease;
+    }
+
+    .milestone:hover {
+      transform: translateX(4px);
+      border-color: rgba(255, 209, 102, 0.55);
+    }
+
+    .milestone::before {
+      content: '';
+      position: absolute;
+      left: -27px;
+      top: 25px;
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      background: var(--gold);
+      border: 3px solid #2b0718;
+      box-shadow: 0 0 14px rgba(255, 209, 102, 0.8);
+    }
+
+    .milestone-top {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+
+    .date-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255, 59, 127, 0.2);
+      border: 1px solid rgba(255, 133, 176, 0.4);
+      color: #ffd6e6;
+      font-weight: 700;
+      font-size: 0.85rem;
+      padding: 5px 12px;
+      border-radius: 999px;
+    }
+
+    .milestone-title {
+      font-size: 1.08rem;
+      font-weight: 700;
+      color: var(--gold);
+    }
+
+    .milestone p {
+      color: #f8e7ee;
+      font-size: 0.96rem;
+      line-height: 1.72;
+    }
+
+    .letter-box {
+      background: linear-gradient(160deg, rgba(56, 12, 34, 0.88), rgba(26, 6, 16, 0.92));
+      border: 1px solid rgba(255, 209, 102, 0.42);
+      border-radius: 28px;
+      padding: 32px 26px;
+      box-shadow: 0 20px 55px rgba(0, 0, 0, 0.48);
+      margin-bottom: 34px;
+    }
+
+    .letter-heading {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: clamp(1.3rem, 4vw, 1.75rem);
+      color: var(--gold);
+      margin-bottom: 16px;
+      text-align: center;
+    }
+
+    .letter-box p {
+      color: #fff0f6;
+      font-size: 1rem;
+      line-height: 1.85;
+      margin-bottom: 15px;
+    }
+
+    .letter-box p:last-child {
+      margin-bottom: 0;
+    }
+
+    .highlight-dream {
+      background: rgba(255, 209, 102, 0.1);
+      border-left: 3px solid var(--gold);
+      padding: 14px 16px;
+      border-radius: 0 14px 14px 0;
+      margin: 18px 0;
+      color: #ffe8a3 !important;
+      font-style: italic;
+    }
+
+    .apology-box {
+      background: rgba(38, 10, 24, 0.82);
+      border: 1px solid var(--border-glow);
+      border-radius: 28px;
+      padding: 30px 24px;
+      text-align: center;
+      margin-bottom: 36px;
+    }
+
+    .apology-box h2 {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: clamp(1.25rem, 4vw, 1.65rem);
+      color: var(--rose-soft);
+      margin-bottom: 10px;
+    }
+
+    .apology-box > p {
+      color: var(--text-muted);
+      font-size: 0.96rem;
+      line-height: 1.65;
+      max-width: 580px;
+      margin: 0 auto 22px;
+    }
+
+    .coupons-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(195px, 1fr));
+      gap: 14px;
+      margin-bottom: 26px;
+      text-align: left;
+    }
+
+    .coupon {
+      background: rgba(20, 4, 12, 0.7);
+      border: 1px dashed rgba(255, 209, 102, 0.55);
+      border-radius: 18px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .coupon-title {
+      font-weight: 700;
+      color: var(--gold);
+      font-size: 0.98rem;
+      margin-bottom: 4px;
+    }
+
+    .coupon-desc {
+      font-size: 0.84rem;
+      color: var(--text-muted);
+      line-height: 1.45;
+    }
+
+    .redeem-btn {
+      align-self: flex-start;
+      background: rgba(255, 59, 127, 0.22);
+      border: 1px solid var(--rose-soft);
+      color: #fff;
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 7px 14px;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .redeem-btn:hover {
+      background: var(--rose);
+    }
+
+    .redeem-btn.claimed {
+      background: #16a34a;
+      border-color: #4ade80;
+      cursor: default;
+    }
+
+    .choice-arena {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      min-height: 68px;
+      position: relative;
+    }
+
+    .forgive-btn {
+      background: linear-gradient(135deg, #22c55e, #15803d);
+      color: #fff;
+      border: none;
+      border-radius: 999px;
+      padding: 13px 28px;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 10px 25px rgba(34, 197, 94, 0.35);
+      transition: transform 0.22s ease;
+    }
+
+    .forgive-btn:hover {
+      transform: scale(1.05);
+    }
+
+    .mad-btn {
+      background: rgba(255, 255, 255, 0.1);
+      color: #ffd6e6;
+      border: 1px solid rgba(255, 133, 176, 0.4);
+      border-radius: 999px;
+      padding: 13px 24px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.18s ease;
+    }
+
+    .forgive-msg {
+      margin-top: 16px;
+      font-weight: 600;
+      color: #86efac;
+      min-height: 24px;
+      font-size: 0.98rem;
+    }
+
+    .proposal-cta-wrap {
+      text-align: center;
+      margin-top: 16px;
+      padding: 28px 20px;
+      border-radius: 28px;
+      background: radial-gradient(circle at center, rgba(255, 209, 102, 0.16), rgba(255, 59, 127, 0.08));
+      border: 1px solid rgba(255, 209, 102, 0.45);
+    }
+
+    .proposal-enter-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      background: linear-gradient(135deg, #ffd166 0%, #f59e0b 45%, #ff3b7f 100%);
+      color: #1b050f;
+      font-family: 'Cinzel Decorative', serif;
+      font-weight: 900;
+      font-size: clamp(1rem, 3.6vw, 1.35rem);
+      padding: 18px 34px;
+      border: none;
+      border-radius: 999px;
+      cursor: pointer;
+      box-shadow: 0 14px 36px rgba(255, 209, 102, 0.35);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .proposal-enter-btn:hover {
+      transform: translateY(-3px) scale(1.03);
+      box-shadow: 0 18px 44px rgba(255, 209, 102, 0.52);
+    }
+
+    #page-proposal {
+      justify-content: center;
+      text-align: center;
+    }
+
+    .proposal-card {
+      max-width: 600px;
+      width: 100%;
+      background: rgba(36, 8, 22, 0.84);
+      border: 1px solid rgba(255, 209, 102, 0.42);
+      backdrop-filter: blur(18px);
+      border-radius: 32px;
+      padding: 36px 24px 34px;
+      box-shadow: 0 26px 75px rgba(0, 0, 0, 0.6);
+    }
+
+    .proposal-question {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: clamp(1.55rem, 5.2vw, 2.35rem);
+      line-height: 1.28;
+      background: linear-gradient(135deg, #fff5f8 0%, #ffd166 55%, #ff85b0 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 18px;
+    }
+
+    .cartoon-stage {
+      width: 100%;
+      max-width: 390px;
+      margin: 0 auto 22px;
+      padding: 12px;
+      border-radius: 24px;
+      background: radial-gradient(circle at top, rgba(255, 209, 102, 0.16), rgba(255, 59, 127, 0.07));
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .cartoon-stage svg {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .proposal-sub {
+      color: #f8e3ec;
+      font-size: 0.98rem;
+      line-height: 1.7;
+      margin-bottom: 24px;
+    }
+
+    .proposal-actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+
+    .yes-forever-btn {
+      background: linear-gradient(135deg, #ff2e74, #e11d48);
+      color: #fff;
+      border: none;
+      border-radius: 999px;
+      padding: 15px 30px;
+      font-size: 1.05rem;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 12px 30px rgba(255, 46, 116, 0.45);
+      transition: transform 0.2s ease;
+    }
+
+    .yes-forever-btn:hover {
+      transform: scale(1.05);
+    }
+
+    .shy-btn {
+      background: rgba(255, 255, 255, 0.1);
+      color: #ffd166;
+      border: 1px solid rgba(255, 209, 102, 0.4);
+      border-radius: 999px;
+      padding: 15px 24px;
+      font-size: 0.96rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .proposal-result {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--gold);
+      min-height: 28px;
+      line-height: 1.6;
+    }
+
+    .back-link-btn {
+      margin-top: 22px;
+      background: transparent;
+      border: 1px solid rgba(255, 133, 176, 0.4);
+      color: var(--rose-soft);
+      padding: 10px 20px;
+      border-radius: 999px;
+      font-size: 0.88rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .back-link-btn:hover {
+      background: rgba(255, 133, 176, 0.14);
+      color: #fff;
+    }
+
+    @media (max-width: 520px) {
+      .welcome-card { padding: 36px 20px; }
+      .letter-box, .apology-box, .proposal-card { padding: 24px 18px; }
+      .timeline { padding-left: 24px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="ambient-bg">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+  </div>
+
+  <section id="page-welcome" class="page active">
+    <div class="welcome-card">
+      <div class="sparkle-badge">Sirf Aapke Liye • Dil Se</div>
+      <h1 class="welcome-title">Welcome Deviji ✨</h1>
+      <p class="welcome-sub">
+        Aapka gussa main samajhta hoon, par dil ke andar jo pyaar, yaadein aur sapne sirf aapke naam hain, unhe ek baar mehsoos zaroor karna.
+      </p>
+      <button id="heartEntranceBtn" class="heart-entrance-btn" type="button">
+        <span>❤️</span>
+        <span>Heart Entrance</span>
+      </button>
+    </div>
+  </section>
+
+  <section id="page-story" class="page">
+    <div class="container">
+      <header class="story-header">
+        <span class="script-tag">Hamari Kahaani</span>
+        <h1>Har Ek Date, Har Ek Ehsaas</h1>
+        <p>
+          Ajnabi se shuru hokar duniya ban jaane tak—yahan wo har pal hai jisne mujhe aur gehraai se aapka banaya.
+        </p>
+      </header>
+
+      <div class="timeline">
+        <article class="milestone">
+          <div class="milestone-top">
+            <span class="date-pill">📅 27 September</span>
+            <span class="milestone-title">Garba Ki Pehli Nazar</span>
+          </div>
+          <p>
+            Garba mein pehli baar aapse mila tha. Ek ajnabi si shuruat thi, par aapko dekhte hi main kahin kho gaya. Jab saath dance kiya, tabhi laga jaise duniya ki saari roshni aapke kadmon ke saath chal rahi ho.
+          </p>
+        </article>
+
+        <article class="milestone">
+          <div class="milestone-top">
+            <span class="date-pill">📅 13 October</span>
+            <span class="milestone-title">Lunch Ki Wo Pehli Puch</span>
+          </div>
+          <p>
+            Jab maine aapse lunch ke liye pucha, wo pal meri zindagi ke sabse khushiyon bhare dinon mein se ek tha. Ek chhota sa sawaal, par dil mein hazaaron khushiyaan.
+          </p>
+        </article>
+
+        <article class="milestone">
+          <div class="milestone-top">
+            <span class="date-pill">📅 27 October</span>
+            <span class="milestone-title">Ride Aur Dil Ka Confession</span>
+          </div>
+          <p>
+            Jab hum ride par gaye aur dil ki baat zubaan par aayi, tab mujhe poori tarah samajh aa gaya ki <strong>you are the one</strong>. Us din ke baad zindagi mein aur kisi ki zaroorat hi mehsoos nahi hui.
+          </p>
+        </article>
+
+        <article class="milestone">
+          <div class="milestone-top">
+            <span class="date-pill">📅 10 November</span>
+            <span class="milestone-title">Room Ka Waqt Aur Pehli Baar Aansu</span>
+          </div>
+          <p>
+            Jab humne mere room par waqt bitaya, main pehli baar aapke saamne roya. Wo kamzori nahi thi—aapke paas hone se ek aisa <strong>sukoon</strong> mila tha jahan dil ka bojh halka ho gaya.
+          </p>
+        </article>
+
+        <article class="milestone">
+          <div class="milestone-top">
+            <span class="date-pill">📅 17 November</span>
+            <span class="milestone-title">Ek Aur Pyaari Ride</span>
+          </div>
+          <p>
+            Phir se ride par gaye aur aise khoobsurat lamhe jode jo hamesha yaadon ki kitab mein chamakte rahenge.
+          </p>
+        </article>
+
+        <article class="milestone">
+          <div class="milestone-top">
+            <span class="date-pill">📅 21 November</span>
+            <span class="milestone-title">Break Ki Shuruat</span>
+          </div>
+          <p>
+            Halaat aise aaye ki break shuru hua kyunki hum abhi independent nahi the. Baatein kam zaroor hui, par dil ke andar aapki jagah kabhi kam nahi hui.
+          </p>
+        </article>
+
+        <article class="milestone">
+          <div class="milestone-top">
+            <span class="date-pill">📅 10 December</span>
+            <span class="milestone-title">Chocolate Aur Pehla Jhumka</span>
+          </div>
+          <p>
+            Ek baar phir mulaqat hui, aur zindagi mein pehli baar kisi ne mujhe chocolate di aur jhumka diya. Wo chhote-chhote tohfe aaj bhi dil ko mehsus karwate hain ki koi apna kitna khaas hai.
+          </p>
+        </article>
+
+        <article class="milestone">
+          <div class="milestone-top">
+            <span class="date-pill">📅 21 February</span>
+            <span class="milestone-title">Wedding Mein Aapka Surprise</span>
+          </div>
+          <p>
+            Aankhein aapko dekhne ke liye taras gayi thi, aur aap wedding mein aakar ek pyaara sa surprise de gayi. Tumhe dekhte hi dil ko jo sukoon mila, uska koi mol nahi.
+          </p>
+        </article>
+
+        <article class="milestone">
+          <div class="milestone-top">
+            <span class="date-pill">📅 21 April</span>
+            <span class="milestone-title">Farewell Par Mera Surprise & Aapki Smile</span>
+          </div>
+          <p>
+            Farewell par maine aapko surprise kiya, aur jab aapke chehre par wo pyaari si smile aayi, tab laga jaise mujhe meri <strong>jannat</strong> mil gayi ho.
+          </p>
+        </article>
+
+        <article class="milestone">
+          <div class="milestone-top">
+            <span class="date-pill">📅 22 May</span>
+            <span class="milestone-title">7 Mahine Ke Intezaar Ki Shuruat</span>
+          </div>
+          <p>
+            Jab hum mile, maine kaha ki ab kab milenge ye nahi pata—aur tab andaza bhi nahi tha ki agli mulaqat seedhe 7 mahine baad hogi.
+          </p>
+        </article>
+
+        <article class="milestone">
+          <div class="milestone-top">
+            <span class="date-pill">📅 2 September (Raat 2:30 Baje)</span>
+            <span class="milestone-title">Unforgettable Confession</span>
+          </div>
+          <p>
+            Raat ke 2:30 baje jab aapne confess kiya—<em>“Ujjwal, main tumhe kitne bhi bol loon ki nahi rehna, but tere bina nahi reh paungi, tujhse bahut pyaar karti hoon”</em>—wo meri zindagi ka sabse unforgettable aur anmol pal ban gaya.
+          </p>
+        </article>
+
+        <article class="milestone">
+          <div class="milestone-top">
+            <span class="date-pill">📅 17 November</span>
+            <span class="milestone-title">7 Mahine Baad Mulaqat Aur Sukoon Bhara Lapada</span>
+          </div>
+          <p>
+            7 mahine baad hum mile, saath waqt bitaya, aur aapne pyaar se lapada maara. Ajeeb baat ye thi ki us lapade mein bhi mujhe bahut sukoon mila kyunki wo aapka tha.
+          </p>
+        </article>
+
+        <article class="milestone">
+          <div class="milestone-top">
+            <span class="date-pill">📅 23 November</span>
+            <span class="milestone-title">Gehra Regret Aur Aapka Last Chance</span>
+          </div>
+          <p>
+            Wo din jab maine aapko bura bol diya—main aaj tak us baat par regret kar raha hoon ki zubaan se wo kaise nikal gaya. Aapke bina main nahi reh paunga. Aapne mujhe 23 November ko jo last chance diya, wo din aaj bhi meri aankhon aur dil ke saamne chal raha hai.
+          </p>
+        </article>
+      </div>
+
+      <section class="letter-box">
+        <h2 class="letter-heading">Dil Se Ek Emotional Khat 💌</h2>
+        <p>
+          Suno... in saari dates ke baad bas itna kehna hai ki mujhe aapke saath har ek sapna poora karna hai. Ye dates aage bhi aise hi add-on hoti rahein, aur har naye din ke saath hamara rishta aur mazboot hota rahe.
+        </p>
+        <p>
+          <strong>Tum hi aakhiri ho, aur tum se hi sab kuch hai.</strong> Meri har subah, meri har koshish, aur meri har dua mein bas aap ho.
+        </p>
+        <div class="highlight-dream">
+          “Maine ek bahut pyaara sapna dekha hai—jab hamari nanhi si beti hogi, toh mujhe use apne haathon mein uthana hai. Jab main use dheere-dheere pehli baar uthaunga, kyunki wo bohot sensitive aur chhota sa baby rahegi, us pal ko main dil mein sambhalna chahta hoon. Aur aapke saath hi apna poora budhapa bitana chahta hoon—haath mein haath liye, har khushi aur har gham mein saath.”
+        </div>
+        <p>
+          Galti hui hai, dil dukhaya hai, par pyaar mein kabhi kami nahi thi aur kabhi hogi bhi nahi. Please mujhe sambhal lo.
+        </p>
+      </section>
+
+      <section class="apology-box">
+        <h2>Sorry Meri Jaan 🥺❤️</h2>
+        <p>
+          Aapka gussa jayaz hai, par main har din aur har pal apni galti sudharne ke liye yahin hoon. Ye chhote-chhote coupons sirf aapki ek muskaan ke liye:
+        </p>
+
+        <div class="coupons-grid">
+          <div class="coupon">
+            <div>
+              <div class="coupon-title">🍫 Chocolate & Jhumka Surprise</div>
+              <div class="coupon-desc">Jab bhi man kare, pyaar wala surprise pakka.</div>
+            </div>
+            <button class="redeem-btn" type="button" onclick="claimCoupon(this)">Claim Karein</button>
+          </div>
+
+          <div class="coupon">
+            <div>
+              <div class="coupon-title">🛵 Long Ride & Baatein</div>
+              <div class="coupon-desc">Bina jaldi kiye, sirf hum dono aur hamari baatein.</div>
+            </div>
+            <button class="redeem-btn" type="button" onclick="claimCoupon(this)">Claim Karein</button>
+          </div>
+
+          <div class="coupon">
+            <div>
+              <div class="coupon-title">🤗 Tight Hug & Sukoon</div>
+              <div class="coupon-desc">Jab gussa pighal jaye tab ek pakka wala hug.</div>
+            </div>
+            <button class="redeem-btn" type="button" onclick="claimCoupon(this)">Claim Karein</button>
+          </div>
+        </div>
+
+        <div class="choice-arena" id="choiceArena">
+          <button class="forgive-btn" id="forgiveBtn" type="button">Haan, Maaf Kiya ❤️<br><span style="font-size:0.75rem;font-weight:500;">(Aage bhi saath chalenge)</span></button>
+          <button class="mad-btn" id="madBtn" type="button">Abhi Gussa Hoon 😤</button>
+        </div>
+        <div class="forgive-msg" id="forgiveMsg"></div>
+      </section>
+
+      <div class="proposal-cta-wrap">
+        <button id="goProposalBtn" class="proposal-enter-btn" type="button">
+          Will You Marry Me Laxmii? 💍✨
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <section id="page-proposal" class="page">
+    <div class="proposal-card">
+      <h1 class="proposal-question">Will You Marry Me Laxmii? 💍✨</h1>
+
+      <div class="cartoon-stage" aria-label="Cartoon groom offering a red rose to bride">
+        <svg viewBox="0 0 380 250" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="bgGrad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#471029"/>
+              <stop offset="100%" stop-color="#220613"/>
+            </linearGradient>
+            <linearGradient id="sherwaniGrad" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#ffd166"/>
+              <stop offset="100%" stop-color="#f59e0b"/>
+            </linearGradient>
+            <linearGradient id="lehengaGrad" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#ff3b7f"/>
+              <stop offset="100%" stop-color="#be123c"/>
+            </linearGradient>
+          </defs>
+
+          <rect width="380" height="250" rx="20" fill="url(#bgGrad)"/>
+          <circle cx="190" cy="52" r="24" fill="rgba(255,209,102,0.14)"/>
+          <text x="190" y="58" text-anchor="middle" font-size="22">💖</text>
+          <text x="72" y="54" text-anchor="middle" font-size="15" opacity="0.8">✨</text>
+          <text x="308" y="54" text-anchor="middle" font-size="15" opacity="0.8">✨</text>
+
+          <ellipse cx="190" cy="224" rx="125" ry="10" fill="rgba(0,0,0,0.4)"/>
+
+          <g id="groom">
+            <rect x="108" y="176" width="14" height="44" rx="7" fill="#fff7ed"/>
+            <rect x="130" y="176" width="14" height="44" rx="7" fill="#fff7ed"/>
+            <ellipse cx="115" cy="221" rx="11" ry="5" fill="#78350f"/>
+            <ellipse cx="137" cy="221" rx="11" ry="5" fill="#78350f"/>
+            <path d="M98 124 Q126 116 154 124 L160 182 L92 182 Z" fill="url(#sherwaniGrad)"/>
+            <path d="M102 126 Q130 155 150 182" stroke="#ff3b7f" stroke-width="8" fill="none" stroke-linecap="round"/>
+            <circle cx="126" cy="96" r="23" fill="#fcd5b5"/>
+            <path d="M103 94 Q105 70 126 70 Q147 70 149 94 Q138 82 126 84 Q113 82 103 94 Z" fill="#2b1610"/>
+            <circle cx="118" cy="97" r="2.6" fill="#2b1610"/>
+            <circle cx="134" cy="97" r="2.6" fill="#2b1610"/>
+            <path d="M120 106 Q126 112 132 106" stroke="#9f1239" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+            <path d="M148 132 Q170 138 184 126" stroke="#fcd5b5" stroke-width="10" fill="none" stroke-linecap="round"/>
+          </g>
+
+          <g id="rose">
+            <path d="M186 125 Q194 144 198 164" stroke="#22c55e" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+            <ellipse cx="195" cy="144" rx="7" ry="3.5" transform="rotate(-25 195 144)" fill="#4ade80"/>
+            <circle cx="186" cy="121" r="11" fill="#e11d48"/>
+            <path d="M179 119 Q186 111 193 119 Q186 127 179 119 Z" fill="#fda4af"/>
+          </g>
+
+          <g id="bride">
+            <path d="M236 132 L274 132 L292 220 L218 220 Z" fill="url(#lehengaGrad)"/>
+            <path d="M222 204 L288 204" stroke="#ffd166" stroke-width="4" stroke-dasharray="6 4"/>
+            <path d="M236 120 L274 120 L276 142 L234 142 Z" fill="#9d174d"/>
+            <path d="M276 76 Q298 125 288 214" stroke="#ff85b0" stroke-width="9" fill="none" stroke-linecap="round" opacity="0.85"/>
+            <circle cx="255" cy="96" r="22" fill="#fcd5b5"/>
+            <path d="M233 95 Q234 71 255 71 Q276 71 277 95 L277 135 L233 135 Z" fill="#1f100b"/>
+            <circle cx="255" cy="76" r="3.5" fill="#ffd166"/>
+            <line x1="255" y1="79" x2="255" y2="85" stroke="#ffd166" stroke-width="2"/>
+            <circle cx="243" cy="103" r="4" fill="#fb7185" opacity="0.45"/>
+            <circle cx="267" cy="103" r="4" fill="#fb7185" opacity="0.45"/>
+            <path d="M245 97 Q248 93 251 97" stroke="#2b1610" stroke-width="2.3" fill="none" stroke-linecap="round"/>
+            <path d="M259 97 Q262 93 265 97" stroke="#2b1610" stroke-width="2.3" fill="none" stroke-linecap="round"/>
+            <path d="M249 106 Q255 112 261 106" stroke="#9f1239" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+            <path d="M238 130 Q218 136 204 128" stroke="#fcd5b5" stroke-width="9" fill="none" stroke-linecap="round"/>
+          </g>
+        </svg>
+      </div>
+
+      <p class="proposal-sub">
+        Sirf aaj ke liye nahi, har kal ke liye—kya aap meri zindagi ki hamesha wali humsafar banogi?
+      </p>
+
+      <div class="proposal-actions">
+        <button id="yesForeverBtn" class="yes-forever-btn" type="button">Haan, Hamesha Ke Liye! 💍❤️</button>
+        <button id="shyBtn" class="shy-btn" type="button">Thoda Sharma Rahi Hoon 🙈</button>
+      </div>
+
+      <div id="proposalResult" class="proposal-result"></div>
+
+      <button id="backToStoryBtn" class="back-link-btn" type="button">← Dates & Khat Par Wapas Jayein</button>
+    </div>
+  </section>
+
+  <script>
+    const pageWelcome = document.getElementById('page-welcome');
+    const pageStory = document.getElementById('page-story');
+    const pageProposal = document.getElementById('page-proposal');
+
+    function showPage(targetPage) {
+      [pageWelcome, pageStory, pageProposal].forEach((p) => p.classList.remove('active'));
+      targetPage.classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    document.getElementById('heartEntranceBtn').addEventListener('click', () => {
+      showPage(pageStory);
+      burstHearts(14);
+    });
+
+    document.getElementById('goProposalBtn').addEventListener('click', () => {
+      showPage(pageProposal);
+      burstHearts(18);
+    });
+
+    document.getElementById('backToStoryBtn').addEventListener('click', () => {
+      showPage(pageStory);
+    });
+
+    function claimCoupon(btn) {
+      if (btn.classList.contains('claimed')) return;
+      btn.classList.add('claimed');
+      btn.textContent = 'Claimed ✓';
+      burstHearts(8);
+    }
+
+    const forgiveBtn = document.getElementById('forgiveBtn');
+    const madBtn = document.getElementById('madBtn');
+    const forgiveMsg = document.getElementById('forgiveMsg');
+    let madClicks = 0;
+
+    forgiveBtn.addEventListener('click', () => {
+      forgiveMsg.textContent = 'Shukriya meri jaan! Aapki ek haan ne poori duniya roshan kar di ❤️✨';
+      burstHearts(20);
+    });
+
+    madBtn.addEventListener('click', () => {
+      madClicks += 1;
+      const messages = [
+        'Ek baar aur soch lo Deviji, dil se maafi maangi hai 🥺',
+        'Thoda sa gussa kam kar do na, aapke bina kuch acha nahi lagta 💕',
+        'Acha theek hai, jitna manana ho manayenge—par saath mat chhodna 🙏❤️'
+      ];
+      forgiveMsg.style.color = '#ffd166';
+      forgiveMsg.textContent = messages[(madClicks - 1) % messages.length];
+      const currentScale = 1 + Math.min(madClicks * 0.08, 0.35);
+      forgiveBtn.style.transform = `scale(${currentScale})`;
+    });
+
+    const yesForeverBtn = document.getElementById('yesForeverBtn');
+    const shyBtn = document.getElementById('shyBtn');
+    const proposalResult = document.getElementById('proposalResult');
+
+    yesForeverBtn.addEventListener('click', () => {
+      proposalResult.innerHTML = 'Forever Starts Now, Meri Laxmii! 💍🌹❤️<br><span style="font-size:0.92rem;color:#fff5f8;font-weight:500;">Har sapna, har date aur har budhapa—bas aapke saath.</span>';
+      burstHearts(28);
+    });
+
+    shyBtn.addEventListener('click', () => {
+      proposalResult.textContent = 'Sharmaiye mat Laxmii, ye gulab aur ye dil hamesha aapke liye hai 🌹✨';
+      burstHearts(10);
+    });
+
+    function spawnHeart(customLeft) {
+      const heart = document.createElement('div');
+      heart.className = 'floating-heart';
+      const icons = ['❤️', '💖', '🌹', '✨', '💕'];
+      heart.textContent = icons[Math.floor(Math.random() * icons.length)];
+      heart.style.left = (customLeft !== undefined ? customLeft : Math.random() * 96) + 'vw';
+      heart.style.animationDuration = (5.5 + Math.random() * 4.5) + 's';
+      heart.style.fontSize = (15 + Math.random() * 14) + 'px';
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 10500);
+    }
+
+    function burstHearts(count) {
+      for (let i = 0; i < count; i++) {
+        setTimeout(() => spawnHeart(10 + Math.random() * 80), i * 65);
+      }
+    }
+
+    setInterval(() => spawnHeart(), 1400);
+  </script>
+</body>
+</html>
